@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Making: Second in Charge | Bet Right Careers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --card: #1E293B;
+      --mid: #334155;
+      --overlay: #475569;
+      --green: #00FF47;
+      --pink: #FF00B8;
+      --cyan: #0EFFC5;
+      --sky-blue: #0ED4FF;
+      --text-primary: #E2E8F0;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --gradient-cta: linear-gradient(180deg, #EB00FF 0%, #FF53A0 100%);
+      --font: 'Poppins', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--mid);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 28px; height: auto; }
+
+    .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-email {
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .nav-email:hover { text-decoration: underline; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--mid);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,255,71,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .pink-stop { color: var(--pink); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .chip {
+      background: var(--card);
+      border: 1px solid var(--mid);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .chip-green {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gradient-cta);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 36px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    /* ── LAYOUT ───────────────────────────────────────────── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .content {
+      padding: 56px 20px;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    .section { margin-bottom: 52px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .section-heading {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.65;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--mid);
+      margin: 52px 0;
+    }
+
+    /* ── CARD BLOCK ───────────────────────────────────────── */
+    .card-block {
+      background: var(--card);
+      border: 1px solid var(--mid);
+      border-left: 4px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    .card-block p {
+      font-size: 16px;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .card-block p + p { margin-top: 16px; }
+
+    /* ── BULLETS ──────────────────────────────────────────── */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .bullet-list li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      min-width: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* ── INFO TABLE ───────────────────────────────────────── */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .info-table tr { border-bottom: 1px solid var(--mid); }
+    .info-table tr:last-child { border-bottom: none; }
+
+    .info-table td {
+      padding: 13px 0;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .info-table td:first-child {
+      font-weight: 600;
+      color: var(--text-secondary);
+      width: 200px;
+      padding-right: 24px;
+      white-space: nowrap;
+    }
+
+    .info-table td:last-child { color: var(--text-primary); }
+
+    /* ── STATS ────────────────────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--mid);
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── PRODUCTS ─────────────────────────────────────────── */
+    .product { margin-bottom: 32px; }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .tag-racing { background: rgba(0,255,71,0.12); color: var(--green); }
+    .tag-sports { background: rgba(14,212,255,0.12); color: var(--sky-blue); }
+
+    .product-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .product-name .product-accent-green { color: var(--green); }
+    .product-name .product-accent-cyan  { color: var(--cyan); }
+    .product-name .product-accent-blue  { color: var(--sky-blue); }
+
+    .product-tagline {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .product-url {
+      font-size: 13px;
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .product-url:hover { text-decoration: underline; }
+
+    /* ── CTA BLOCK ────────────────────────────────────────── */
+    .cta-block {
+      text-align: center;
+      padding: 48px 24px;
+      position: relative;
+    }
+
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(235,0,255,0.07) 0%, transparent 70%);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .cta-block h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-block p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .cta-email {
+      display: block;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .cta-email:hover { text-decoration: underline; }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--card);
+      border-top: 1px solid var(--mid);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer .footer-brand {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── CGM ──────────────────────────────────────────────── */
+    .cgm {
+      background: #ffffff;
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .cgm-tagline {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 6px;
+    }
+
+    .cgm-support {
+      font-family: var(--font);
+      font-size: 13px;
+      color: #000;
+    }
+
+    .cgm-support a { color: #000; text-decoration: underline; }
+
+    /* ── MOBILE ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 16px; }
+      .nav-email { display: none; }
+
+      .hero { padding: 48px 16px 40px; }
+
+      .content { padding: 40px 16px; }
+
+      .card-block { padding: 18px 20px; }
+
+      .info-table td:first-child {
+        width: 130px;
+        font-size: 13px;
+        white-space: normal;
+      }
+
+      .info-table td:last-child { font-size: 13px; }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .section-heading { font-size: 26px; }
+
+      .cta-block { padding: 36px 0; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 30px; }
+      .chips { gap: 8px; }
+      .chip { font-size: 12px; padding: 5px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://betright.com.au" class="nav-logo">
+      <svg viewBox="0 0 149 304" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M72.8086 142.023C111.989 142.023 143.753 110.229 143.753 71.0114C143.753 31.7928 111.989 0 72.8086 0C33.6268 0 1.86401 31.7928 1.86401 71.0114C1.86401 110.229 33.6268 142.023 72.8086 142.023ZM73.5704 100.611C89.9037 100.611 103.143 87.3566 103.143 71.0094C103.143 54.6622 89.9037 41.4091 73.5704 41.4091C57.2371 41.4091 43.9978 54.6622 43.9978 71.0094C43.9978 87.3566 57.2371 100.611 73.5704 100.611Z" fill="url(#lm0)"/>
+        <path d="M116.132 154.36L149 187.258L32.8673 303.5L0 270.6L116.132 154.36Z" fill="url(#lm1)"/>
+        <path d="M149 270.6L116.132 303.5L0 187.258L32.8675 154.358L149 270.6Z" fill="url(#lm2)" fill-opacity="0.75"/>
+        <defs>
+          <linearGradient id="lm0" x1="72.8086" y1="0" x2="72.8086" y2="142.023" gradientUnits="userSpaceOnUse"><stop stop-color="#FF378B"/><stop offset="1" stop-color="#EB00FF"/></linearGradient>
+          <linearGradient id="lm1" x1="132.566" y1="170.808" x2="16.3236" y2="286.941" gradientUnits="userSpaceOnUse"><stop stop-color="#00FF47"/><stop offset="1" stop-color="#00F0FF"/></linearGradient>
+          <linearGradient id="lm2" x1="132.566" y1="287.05" x2="16.3236" y2="170.919" gradientUnits="userSpaceOnUse"><stop stop-color="#00FF47"/><stop offset="1" stop-color="#00F0FF"/></linearGradient>
+        </defs>
+      </svg>
+      <span class="nav-brand">Bet Right</span>
+    </a>
+    <a href="mailto:careers@betright.com.au" class="nav-email">careers@betright.com.au</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <div class="eyebrow">Bet Right Careers</div>
+      <h1>Market Making:<br>Second in Charge<span class="pink-stop">.</span></h1>
+      <p class="hero-sub">Run the room. Shape the market.</p>
+      <div class="chips">
+        <span class="chip chip-green">Full-Time Permanent</span>
+        <span class="chip">Flexible Location</span>
+        <span class="chip">Reports to Head of Market Making</span>
+      </div>
+      <a href="mailto:careers@betright.com.au" class="btn-primary">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="container">
+
+      <!-- ABOUT THE ROLE -->
+      <div class="section">
+        <div class="section-label">About the Role</div>
+        <div class="card-block">
+          <p>This isn't a passenger seat. As Market Making 2IC at Bet Right, you'll be the engine behind our market making operation. You're the person the Head of Market Making trusts to run the floor, call the shots and make the tough risk decisions when they matter most.</p>
+          <p>You'll own the financial and operational performance of our sports market making function day-in, day-out. You'll build and mentor a crew of Market Makers, set the standard for market quality, and help forge the culture that makes Bet Right's markets the sharpest in the game.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- PRIMARY FUNCTION -->
+      <div class="section">
+        <div class="section-label">Primary Function</div>
+        <div class="section-heading">What you'll own<span class="pink-stop">.</span></div>
+        <ul class="bullet-list">
+          <li>Step up as Head of Market Making when needed, with full accountability and no hesitation</li>
+          <li>Drive wagering strategy and market direction across the Bet Right group</li>
+          <li>Build a high-performance team of Market Makers who live and breathe the Bet Right mission</li>
+          <li>Coach, mentor and develop Market Makers and wagering graduates into the best version of themselves</li>
+          <li>Take hands-on ownership of risk across racing and sport, including real-time client-level decisions</li>
+          <li>Own and strengthen relationships with third-party data providers and regulatory bodies</li>
+          <li>Keep governance tight, with compliance, policies and procedures upheld across every corner of the floor</li>
+          <li>Step in on client advocacy and admin when it counts, because service standards never slip</li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <!-- KEY RESPONSIBILITIES -->
+      <div class="section">
+        <div class="section-label">Key Responsibilities</div>
+        <div class="section-heading">What a great day looks like<span class="pink-stop">.</span></div>
+        <ul class="bullet-list">
+          <li>Lock down the integrity and accuracy of all sports and racing market making systems: controls, staffing, financials</li>
+          <li>Dissect the previous day's results, hunt down anomalies and suspicious activity, and act fast</li>
+          <li>Build sharp, commercially competitive markets across all sports and benchmark them against the best</li>
+          <li>Keep the client watch list and Risk Management System spotless, every profile current, every condition noted</li>
+          <li>Make decisive, real-time bet confirmation calls using the RMS, CRM and Bet Right's information systems</li>
+          <li>Lead your Market Makers with purpose: clear KPIs, timely reviews, high standards</li>
+          <li>Keep the Head of Market Making and COO across every material event the moment it matters</li>
+          <li>Deliver the weekly market making report to management. Sharp, accurate, on time.</li>
+          <li>Zero errors in resulting. Every time. No exceptions.</li>
+          <li>Handle client complaints with professionalism and resolve them per the complaints procedure</li>
+          <li>Get markets live at least one day before events, without fail</li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <!-- KPIs -->
+      <div class="section">
+        <div class="section-label">Key Performance Indicators</div>
+        <div class="section-heading">How we keep score<span class="pink-stop">.</span></div>
+        <table class="info-table">
+          <tbody>
+            <tr><td>Daily analysis</td><td>Completed by the agreed deadline, every day</td></tr>
+            <tr><td>Market posting</td><td>Live at least 1 day prior to events</td></tr>
+            <tr><td>Market quality</td><td>Commercially sharp and consistent with competitors</td></tr>
+            <tr><td>Client profiles</td><td>100% current, all special conditions captured</td></tr>
+            <tr><td>Resulting accuracy</td><td>Zero errors. Non-negotiable.</td></tr>
+            <tr><td>Team performance</td><td>Market Makers meeting their job descriptions and KPIs</td></tr>
+            <tr><td>Escalation</td><td>All substantial events to senior management in real time</td></tr>
+            <tr><td>Complaints</td><td>Every one handled per the complaints procedure</td></tr>
+            <tr><td>Performance reviews</td><td>On time, followed up, no loose ends</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <!-- WHAT WE'RE LOOKING FOR -->
+      <div class="section">
+        <div class="section-label">What We're Looking For</div>
+        <div class="section-heading">You're probably already thinking about applying<span class="pink-stop">.</span></div>
+        <p class="section-intro">You've been in the trenches. You know how markets move, how risk behaves and how to read a client. Now you're ready to lead. Here's what we're after:</p>
+        <ul class="bullet-list">
+          <li>Deep, battle-tested understanding of risk management in sports betting</li>
+          <li>A genuine love of sport and racing. Not just a job, an obsession.</li>
+          <li>A track record of leading and developing high-performing market making teams</li>
+          <li>Sharp negotiating instincts and the ability to bring people with you</li>
+          <li>Analytical to the core: numerate, precise and able to hold intense focus under pressure</li>
+          <li>A challenger mindset. You question the status quo, you innovate, you think laterally.</li>
+          <li>Dispute resolution and reasoning skills that make hard conversations easy</li>
+          <li>Commercial savvy across budget control, operational management and cost discipline</li>
+          <li>Communication skills that work in every direction: floor staff, management, clients</li>
+          <li>Tech-confident across trading systems, market making platforms and Microsoft Office</li>
+          <li>Built for a 24/7 operation with the resilience and mindset to thrive in it</li>
+          <li>The energy and initiative that gets a team fired up</li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ROLE DETAILS -->
+      <div class="section">
+        <div class="section-label">Role Details</div>
+        <div class="section-heading">The details<span class="pink-stop">.</span></div>
+        <table class="info-table">
+          <tbody>
+            <tr><td>Employment type</td><td>Full-time, permanent</td></tr>
+            <tr><td>Ordinary hours</td><td>38 hours per week (flexible structure by agreement)</td></tr>
+            <tr><td>Reports to</td><td>Head of Market Making</td></tr>
+            <tr><td>Manages</td><td>Market Makers</td></tr>
+            <tr><td>Annual leave</td><td>20 days per year</td></tr>
+            <tr><td>Superannuation</td><td>Paid per Commonwealth legislation</td></tr>
+            <tr><td>Remuneration</td><td>Competitive base salary + performance bonus &amp; incentives</td></tr>
+            <tr><td>Notice period</td><td>2 months (employer and employee)</td></tr>
+            <tr><td>Public holidays</td><td>Equivalent leave day granted for each public holiday worked</td></tr>
+            <tr><td>Probity</td><td>Police clearance and regulatory checks required</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <!-- THE OPPORTUNITY -->
+      <div class="section">
+        <div class="section-label">The Opportunity</div>
+        <div class="section-heading">Why this role is worth your move<span class="pink-stop">.</span></div>
+        <ul class="bullet-list">
+          <li>A genuine second-in-charge role with real weight behind it and a clear path for career progression</li>
+          <li>Competitive base salary backed by a real performance bonus and incentives structure</li>
+          <li>Flexible work structure where you and your Department Head agree on the five days that work for you</li>
+          <li>20 days annual leave and a culture that actually wants you to use it</li>
+          <li>A seat among some of the sharpest sports minds in Australian wagering</li>
+          <li>The chance to be part of something being built from scratch, not inherited, and to leave your mark on it</li>
+          <li>A learning-first environment where growth isn't just possible, it's expected</li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <!-- WHO WE ARE -->
+      <div class="section">
+        <div class="section-label">Who We Are</div>
+        <div class="section-heading">We're not your typical bookmaker<span class="pink-stop">.</span></div>
+        <div class="card-block">
+          <p>Bet Right is a challenger wagering operator on a mission to transform the industry. We back innovation over inertia, long-term thinking over short-term gains, and clients over everything. We build technology that sets us apart. We're looking for people who want to be part of building it. Before applying, take a look at the full advert attached — it's worth the read.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><span class="stat-number">300+</span><span class="stat-label">Markets per match</span></div>
+          <div class="stat-card"><span class="stat-number">#1</span><span class="stat-label">Best of Big 3. Guaranteed.</span></div>
+          <div class="stat-card"><span class="stat-number">24/7</span><span class="stat-label">Racing &amp; sport coverage</span></div>
+          <div class="stat-card"><span class="stat-number">10+</span><span class="stat-label">Sports with deep markets</span></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- OUR PRODUCTS -->
+      <div class="section">
+        <div class="section-label">Our Products</div>
+        <div class="section-heading">Innovation is what we do<span class="pink-stop">.</span></div>
+        <p class="section-intro">Bet Right's product suite is built around a single idea: give our clients a better experience than they can get anywhere else. Every product below was built in-house, from scratch, by people who genuinely love wagering.</p>
+
+        <div class="product">
+          <span class="product-tag tag-racing">Racing</span>
+          <div class="product-name"><span class="product-accent-green">RPX</span> — Right Price Execution</div>
+          <p class="product-desc">Best of the Big 3, or better. Guaranteed. For all Australian Racing Fixed Price Win Bets, RPX automatically delivers the best price across Sportsbet, TAB and Ladbrokes. Or beats them. Clients never have to shop around again. For a Market Maker, this is what it means to compete on quality, not just on odds.</p>
+          <div class="product-tagline">Best price guaranteed on every Australian racing fixed price win bet</div>
+          <a href="https://betright.com.au/right-price-execution" class="product-url" target="_blank" rel="noopener">betright.com.au/right-price-execution →</a>
+        </div>
+
+        <div class="product">
+          <span class="product-tag tag-racing">Racing</span>
+          <div class="product-name"><span class="product-accent-cyan">Pro Trades</span> — Follow the Sharpest Bettors</div>
+          <p class="product-desc">Why dabble with amateurs when you can bet with pros? Pro Trades lets Bet Right clients follow professional bettors' real bets in real time. Not tips, actual trades. It's a product that exists nowhere else in the Australian market and it's a direct result of us thinking differently about what a wagering platform can be.</p>
+          <a href="https://betright.com.au/pro-trades" class="product-url" target="_blank" rel="noopener">betright.com.au/pro-trades →</a>
+        </div>
+
+        <div class="product">
+          <span class="product-tag tag-sports">Sports</span>
+          <div class="product-name"><span class="product-accent-blue">Deep Markets</span> — More Than the Big 3</div>
+          <p class="product-desc">300+ markets per match across major football tournaments. SGMs combining goalscorers, corners, cards and more. For any marquee sporting event — think a World Cup, a Grand Final, a Champions League knockout — Bet Right puts more markets in front of clients than any of the Big 3. That depth doesn't build itself. It takes a Market Making team that moves fast, prices confidently and never blinks. That's the standard you'll hold.</p>
+          <div class="product-tagline">300+ markets per match on major events. More than any of the Big 3.</div>
+          <a href="https://betright.com.au" class="product-url" target="_blank" rel="noopener">betright.com.au →</a>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- WHY IT MATTERS -->
+      <div class="section">
+        <div class="section-label">Why It Matters For This Role</div>
+        <div class="section-heading">The market making challenge at Bet Right<span class="pink-stop">.</span></div>
+        <div class="card-block">
+          <p>Products like RPX, Pro Trades and our deep sports market coverage don't happen without brilliant Market Makers behind them. Every one of those markets has to be priced, managed and defended in real time. Our 2IC sits right at the intersection of commercial risk and product innovation, making the calls that keep us competitive, honest and ahead.</p>
+          <p>If you've ever wanted to work somewhere that builds its own tools, challenges the incumbents and actually backs its people to make decisions. This is that place.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Ready to run the room<span class="pink-stop">?</span></h2>
+        <p>Send your CV and a short cover letter. Tell us about your markets experience and why Bet Right is your next move.</p>
+        <a href="mailto:careers@betright.com.au" class="btn-primary">Send Application</a>
+        <a href="mailto:careers@betright.com.au" class="cta-email">careers@betright.com.au</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Bet Right</div>
+    <p><a href="https://betright.com.au" target="_blank" rel="noopener">betright.com.au</a> &nbsp;&middot;&nbsp; <a href="mailto:careers@betright.com.au">careers@betright.com.au</a></p>
+  </footer>
+
+  <!-- CGM — mandatory -->
+  <div class="cgm">
+    <div id="cgmTagline" class="cgm-tagline"></div>
+    <div class="cgm-support">For free and confidential support call 1800 858 858 or visit <a href="https://www.gamblinghelponline.org.au" target="_blank" rel="noopener">gamblinghelponline.org.au</a></div>
+  </div>
+
+  <script>
+    const taglines = [
+      "Chances are you're about to lose.",
+      "Think. Is this a bet you really want to place?",
+      "What's gambling really costing you?",
+      "What are you prepared to lose today? Set a deposit limit.",
+      "Imagine what you could be buying instead.",
+      "What are you really gambling with?"
+    ];
+    document.getElementById('cgmTagline').textContent = taglines[Math.floor(Math.random() * taglines.length)];
+  </script>
+
+</body>
+</html>
